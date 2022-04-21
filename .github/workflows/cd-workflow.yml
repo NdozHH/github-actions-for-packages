@@ -1,4 +1,4 @@
-# This file wont do us much good in this location, make sure you change the path as directed to continue!
+# This file wont do us much good in this location, make sure you change the path as directed to continue! Works?
 
 name: Docker CD
 
@@ -58,13 +58,11 @@ jobs:
       with:
         name: webpack artifacts
         path: public
-    - name: Read Docker Image Identifiers
-      run: echo ::set-env name=IMAGE_REPOSITORY::$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')
     - name: Build container image
       uses: docker/build-push-action@v2
       with:
         username: ${{github.actor}}
         password: ${{secrets.GITHUB_TOKEN}}
         registry: docker.pkg.github.com
-        repository: ${{ env.IMAGE_REPOSITORY }}/tic-tac-toe
+        repository: ndozhh/github-actions-for-packages/tic-tac-toe
         tag_with_sha: true
