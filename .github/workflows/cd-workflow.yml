@@ -63,6 +63,7 @@ jobs:
     - name: Build container image
       uses: docker/build-push-action@v2
       with:
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: true
         username: ${{github.actor}}
         password: ${{secrets.GITHUB_TOKEN}}
         registry: docker.pkg.github.com
